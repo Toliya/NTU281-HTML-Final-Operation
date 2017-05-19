@@ -1,0 +1,28 @@
+/* @mixin 混合器名稱(){} */
+
+@mixin set-grid($name) {
+    /* 混合器的程式碼 */
+    @for $n from 1 through 12 {
+        .col-#{$name}-#{$n} {
+            width: calc( 100% * #{$n} / 12);
+        }
+    }
+}
+
+/* 手機的網格 */
+@include set-grid('xs')
+
+/* 平板的網格 */
+@media screen and ( min-width: 768px) {
+    @include set-grid('sm');
+}
+
+/* 電腦桌面版的網格 */
+@media screen and ( min-width: 992px) {
+    @include set-grid('md');
+}
+
+/* 寬螢幕的網格 */
+@media screen and ( min-width: 1200px ) {
+    @include set-grid('lg');
+}
